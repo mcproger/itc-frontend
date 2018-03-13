@@ -1,52 +1,36 @@
-var people = [
-  {
-    name: "Person1",
-    sex: "M",
-    favouriteMovie: "Movie1",
-  },
-  {
-    name: "Person2",
-    sex: "F",
-    favouriteMovie: "Movie2",
-  },
-  {
-    name: "Person3",
-    sex: "M",
-    favouriteMovie: "Movie3",
-  },
-  {
-    name: "Person4",
-    sex: "F",
-    favouriteMovie: "Movie4",
-  },
+const people = [
+  { name: "Person1", sex: "M", favouriteMovie: "Movie1" },
+  { name: "Person2", sex: "F", favouriteMovie: "Movie2" },
+  { name: "Person3", sex: "M", favouriteMovie: "Movie3" },
+  { name: "Person4", sex: "F", favouriteMovie: "Movie4" },
 ]
 
-function plus(...args) {
-  return args.reduce(function(sum, current) {
-    return sum + current
-      }, 0)
-}
 
-function multiply(argOne, argTwo) {
-  return argOne * argTwo
-}
+const plus = (...args) =>
+  args.reduce((sum, current) =>
+    sum + current,
+    0,
+  )
 
-function multiplyAll(...args) {
-  return args.reduce(function(mul, current) {
-      return mul * current
-        },
-    1)
-}
 
-function mergeArrays(arrayOne, arrayTwo) {
-  return arrayOne.concat(arrayTwo)
-}
+const multiply = (argOne, argTwo) => argOne * argTwo
 
-function filterFemales(people) {
-  return people.filter(people => people.sex == "F")
-}
 
-function getQuadrant(x, y) {
+const multiplyAll = (...args) =>
+  args.reduce((mul, current) =>
+    mul*current,
+    1,
+  )
+
+
+const mergeArrays = (arrayOne, arrayTwo) => arrayOne.concat(arrayTwo)
+
+
+const filterFemales = people =>
+  people.filter(people => people.sex == "F")
+
+
+const getQuadrant = (x, y) => {
   if (x > 0 && y > 0) {
     return "First quarter"
   }
@@ -76,19 +60,16 @@ function getQuadrant(x, y) {
   }
 }
 
-function objectToQueryString(data) {
-  let url = 'https://vk.com?'
-  return encodeURI(url + Object.entries(data).map(function(element) {
-      return element.join('=')
-  }).join('&'))
 
-}
+const objectToQueryString = (data, url) =>
+  encodeURI(url + Object.entries(data).map(element =>
+    element.join("=")).join("&"))
 
-function getIn(obj, path, defaul) {
-  // if (obj.path.map(value => value).join('.')) {
-  //   return obj.path.map(value => value).join('.')
-  // }
-  alert(path.forEach(function(item, i, arr) {return item}))
-}
 
-console.log(getIn({ address: { street: "Кутузовский проспект"}}, ['address', 'street'], 'Бомж'))
+console.log(plus(1, 2, 3, 4))
+console.log(multiply(1, 2))
+console.log(multiplyAll(1, 2, 3, 4))
+console.log(mergeArrays([1, 2, 3], [4, 5]))
+console.log(filterFemales(people))
+console.log(getQuadrant(1, 2))
+console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }, 'https://vk.com?'))
