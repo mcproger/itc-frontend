@@ -61,8 +61,8 @@ const getQuadrant = (x, y) => {
 }
 
 
-const objectToQueryString = (data, url) =>
-  encodeURI(url + Object.entries(data).map(element =>
+const objectToQueryString = (data) =>
+  encodeURIComponent(Object.entries(data).map(element =>
     element.join("=")).join("&"))
 
 
