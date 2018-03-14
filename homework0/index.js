@@ -18,7 +18,7 @@ const multiply = (argOne, argTwo) => argOne * argTwo
 
 const multiplyAll = (...args) =>
   args.reduce((mul, current) =>
-    mul*current,
+    mul * current,
     1,
   )
 
@@ -66,6 +66,18 @@ const objectToQueryString = (data, url) =>
     element.join("=")).join("&"))
 
 
+const getIn = (object, path, defaultValue) =>
+  path.reduce(((object, property) => {
+    if (object && object.hasOwnProperty(property)) {
+      return object[property]
+    }
+    else {
+      return defaultValue
+    }
+  }),
+  object)
+
+
 console.log(plus(1, 2, 3, 4))
 console.log(multiply(1, 2))
 console.log(multiplyAll(1, 2, 3, 4))
@@ -73,3 +85,4 @@ console.log(mergeArrays([1, 2, 3], [4, 5]))
 console.log(filterFemales(people))
 console.log(getQuadrant(1, 2))
 console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }, 'https://vk.com?'))
+console.log(getIn({ address: { street: "Кутузовский проспект"}}, ['address', 'street'], 'Бомж'))
