@@ -2,14 +2,14 @@ const redditApiUrl = 'https://www.reddit.com/top.json'
 
 
 const generatePostEntry = posts => {
-  data.data.children.map(post => {
+  posts.data.children.map(post => {
     postBlock = `<div class="media"> \
       <div class="media-left"> \
         <img src="${post.data.thumbnail}" onerror="this.src='default.jpg'" class="media-object" style="width:60px"> \
       </div> \
       <div class="media-body"> \
         <h4 class="media-heading"></h4> \
-        <a href="${post.data.permalink}">${post.data.title}</p> \
+        <a href="https://reddit.com${post.data.permalink}">${post.data.title}</a> \
       </div> \
     </div> \
     `
